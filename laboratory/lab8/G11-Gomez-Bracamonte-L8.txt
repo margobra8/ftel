@@ -5,13 +5,16 @@ Se deben rellenar los siguientes resultados pedidos en el enunciado de la práct
 * Tarea 1.
 - Dirección IP del ordenador en el que ha realizado la práctica:
 
-138.4.31.51
+138.4.31.237
 
 * Tarea 4.
 -  Indique en qué posición dentro de la cabecera IP se encuentran los octetos que en la cabecera IP  llevan la dirección origen del paquete IP:
 
+La dirección IP origen se encuentra en los octetos 13 a 16.
+
 - Indique justificadamente si al transmitirse por la red los octetos de la dirección IP se envían en el orden del convenio extremista mayor o el extremista menor:
 
+Se envían con convenio extremista mayor, ya que el bit más significativo de los octetos que representan la dirección IP ocupa una posición menor en memoria. 
 
 * Tarea 5.
 - Anote los puertos origen y destino del paquete examinado:
@@ -27,11 +30,37 @@ El protocolo de aplicación asociado al puerto 80 es HTTP.
 * Tarea 7.
 - Haga un traceroute, con la opción -N 1, a la dirección IP anotada en el punto anterior. Compare las direcciones IP que le va mostrando asociadas a cada número de saltos con las direcciones que le han aparecido en los pings: que ha hecho en esta tarea y explique las coincidencias:
 
+Al ejecutar el comando ping, las dirección IP que se muestra para cada valor N de la opción -t corresponde con la dirección IP que se muestra para el salto número N al ejecutar la orden traceroute. Como con la opción -t se limita el número de saltos que la orden ping puede realizar, se obtiene la dirección IP correspondiente a la máquina en el dicho número de salto. Por ejemplo, para N = 3, la orden ping muestra la dirección IP de la máquina que se encuentra en el tercer salto de la orden traceroute. En esta tarea se ha realizado un traceroute "manual" con pings, incrementando manualmente el límite de saltos para obtener la respuesta de la maquina que responda en dicho salto. 
 
 * Tarea 8.
 - Incluya la salida de dicha orden en el formulario de respuesta:
 
+traceroute to www.cmu.edu (128.2.42.52), 30 hops max, 60 byte packets
+ 1  router-lab.lab.dit.upm.es (138.4.30.1)  0.185 ms  0.172 ms  0.138 ms
+ 2  fw-lab.lab.dit.upm.es (138.4.26.1)  0.308 ms  0.227 ms  0.216 ms
+ 3  r7000-ext.dit.upm.es (138.4.0.1)  0.536 ms  0.891 ms  0.568 ms
+ 4  192.168.100.65 (192.168.100.65)  0.551 ms  0.476 ms  0.474 ms
+ 5  192.168.200.84 (192.168.200.84)  0.492 ms  0.458 ms  0.439 ms
+ 6  ciemat-rt-ju-02-xe-4-0-2.net.redimadrid.es (193.145.14.134)  0.772 ms  0.823 ms  0.830 ms
+ 7  AE3-103.ciemat.rt1.mad.red.rediris.es (130.206.212.105)  0.833 ms  1.197 ms  0.920 ms
+ 8  CIEMAT.AE2.telmad.rt4.mad.red.rediris.es (130.206.245.2)  1.481 ms  1.671 ms  1.640 ms
+ 9  rediris.mx1.mar.fr.geant.net (62.40.124.192)  15.397 ms  15.241 ms  15.298 ms
+10  ae8.mx1.gen.ch.geant.net (62.40.98.73)  21.562 ms  21.548 ms  21.470 ms
+11  ae4.mx1.par.fr.geant.net (62.40.98.152)  28.970 ms  28.961 ms  29.056 ms
+12  et-3-1-0.102.rtsw.newy32aoa.net.internet2.edu (198.71.45.236)  113.307 ms  113.320 ms  113.470 ms
+13  et-4-0-0.4079.rtsw.phil.net.internet2.edu (162.252.70.103)  115.243 ms  115.744 ms  115.141 ms
+14  204.238.76.33 (204.238.76.33)  115.832 ms  115.712 ms  115.731 ms
+15  204.238.76.46 (204.238.76.46)  116.016 ms  116.508 ms  115.893 ms
+16  162.223.17.79 (162.223.17.79)  126.013 ms  125.606 ms  126.384 ms
+17  CORE255-POD-I-DCNS.GW.CMU.NET (128.2.255.193)  125.998 ms  126.154 ms  126.149 ms
+18  POD-D-DCNS-CORE255.GW.CMU.NET (128.2.255.210)  126.155 ms  126.361 ms  126.157 ms
+19  WWW-CMU-PROD-VIP.ANDREW.CMU.EDU (128.2.42.52)  126.251 ms  126.210 ms  126.536 ms
+
 - ¿A cuántos saltos se encuentra de su ordenador el servidor indicado?:
 
+Se encuentra a 19 saltos.
+
 - ¿Entre qué máquinas (dé sus nombres y direcciones IP) se produce el mayor incremento del RTT? Indique una posible explicación de este incremento:
+
+Los nombres de los servidores son ae4.mx1.par.fr.geant.net y et-3-1-0.102.rtsw.newy32aoa.net.internet2.edu y sus direcciones IP son 62.40.98.152 y 198.71.45.236 respectivamente. Estas máquinas corresponden a los routers de los agregadores de servicio de Internet europeo y americano respectivamente. El alto incremento de casi 100 ms se debe a que los datos están viajando por en enlace transatlántico del continente europeo a Estados Unidos, que requiere de más tiempo.
 
