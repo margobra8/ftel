@@ -1,0 +1,23 @@
+Marcos Gómez Bracamonte
+cat
+ls > lista-ficheros.txt
+cat > frutas.txt
+cat frutas.txt
+sort frutas.txt
+sort frutas.txt -o frutas2.txt
+sort > verduras.txt
+cat >> frutas.txt
+cat frutas.txt
+cat frutas.txt verduras.txt > comida.txt
+cat comida.txt
+sort frutas.txt verduras.txt > comida.txt
+cat comida.txt
+ls > nombres.txt
+wc -w < nombres.txt
+ls | wc -w
+ls -l
+chmod 440 frutas.txt
+ls -l
+nano frutas.txt
+man chmod
+history -w G11-Gomez-Bracamonte-L3-1.txt

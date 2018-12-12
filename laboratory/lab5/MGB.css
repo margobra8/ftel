@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+  color: #ff6600;
+  background-color: lightgoldenrodyellow;
+}
+h1 {
+  color: #ff4743;
+  border: 4px solid blue;
+  border-image: repeating-linear-gradient(45deg, #f33, #3bf, #f33 30px) 10;
+}
+h2 {
+  color: #ff1177;
+  border: 2px solid #33c;
+  border-radius: 4px;
+}
+button {
+  color: #fff;
+  background-color: #447;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+p,
+li {
+  font-family: "Arial";
+  font-weight: bold;
+}

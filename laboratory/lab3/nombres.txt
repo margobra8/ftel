@@ -1,0 +1,6 @@
+comida.txt
+frutas2.txt
+frutas.txt
+lista-ficheros.txt
+nombres.txt
+verduras.txt

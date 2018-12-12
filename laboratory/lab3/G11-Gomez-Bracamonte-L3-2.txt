@@ -1,0 +1,15 @@
+Marcos Gómez Bracamonte
+cat > paises.txt
+cat paises.txt 
+cat >> paises.txt 
+cat paises.txt 
+cat paises.txt | grep a | wc -l
+cat paises.txt | grep a | wc -l > cuenta-a.txt
+cat cuenta-a.txt
+sort paises.txt -o paises-ordenados.txt 
+cat paises-ordenados.txt
+ls -l
+ls -l cuenta-a.txt 
+chmod 644 cuenta-a.txt 
+ls -l cuenta-a.txt 
+history -w G11-Gomez-Bracamonte-L3-2.txt
