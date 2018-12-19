@@ -1,0 +1,186 @@
+﻿FTEL - Laboratorio 7 - Formulario de entrega
+
+Se deben rellenar los siguientes resultados pedidos en el enunciado de la práctica. NO borre nada de lo que ya está escrito.
+
+* Tarea 3. 
+
+3.1 Recorte y pegue aquí las sentencias CREATE TABLE usadas para crear las tablas de la base de datos:
+
+
+mysql> create table usuario (nombre varchar(30) not null, clave varchar(30) not null, imagen varchar(30) not null default "usuario.jpg", edad int, primary key (nombre));
+
+mysql> create table asiste (nombre varchar(30) not null, que varchar(30) not null, primary key (nombre, que));
+
+mysql> create table sitio (direccion varchar(30) not null, coordenadas varchar(30) not null, primary key (direccion));
+
+mysql> create table quedada (que varchar(30) not null, dia date not null, hora time not null, donde varchar(30) not null, primary key (que), foreign key (donde) references sitio(direccion));
+
+
+3.2. Recorte y pegue aquí el resultado de la sentencia DESCRIBE para cada una de las tablas creadas:
+
+
+mysql> describe usuario;
++--------+-------------+------+-----+-------------+-------+
+| Field  | Type        | Null | Key | Default     | Extra |
++--------+-------------+------+-----+-------------+-------+
+| nombre | varchar(30) | NO   | PRI | NULL        |       |
+| clave  | varchar(30) | NO   |     | NULL        |       |
+| imagen | varchar(30) | NO   |     | usuario.jpg |       |
+| edad   | int(11)     | YES  |     | NULL        |       |
++--------+-------------+------+-----+-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe asiste;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nombre | varchar(30) | NO   | PRI | NULL    |       |
+| que    | varchar(30) | NO   | PRI | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> describe quedada;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| que       | varchar(30) | NO   | PRI | NULL    |       |
+| dia       | date        | NO   |     | NULL    |       |
+| hora      | time        | NO   |     | NULL    |       |
+| donde     | varchar(30) | NO   | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> describe sitio;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| direccion   | varchar(30) | NO   | PRI | NULL    |       |
+| coordenadas | varchar(30) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+
+3.3. Explique brevemente cuáles son los elementos del diagrama E-R de la práctica que se deben transformar en tablas, cuáles no y por qué:
+
+
+En el modelo relacional encontramos cinco elementos: usuario, asiste, quedada, donde y sitio. En primer lugar, se crea la tabla "usuario" con los correspondientes campos, y se fija "nombre" como la primary key. Seguidamente, podemos ver que la relación "asiste" es una relación M:N por lo que necesitará una tabla que relacione los valores de la PK de "usuario" con la PK de "quedada" (campo "que") y la propia PK de la tabla asiste será la conjunción de los valores de "nombre" y "que". "sitio" es una tabla normal con "direccion" como PK. "quedada" es una tabla que tras establecer sus campos respectivos y fijar el campo "que" como PK, necesitamos enlazar los lugares de las quedadas con la propia quedada. Esto es una relación N:1, que se muestra en el modelo relacional como "donde". Esta relación no precisa de otra tabla ya que puede haber varias quedadas en un mismo lugar pero no varios lugares en una sola quedada. Esto se expresa con un campo "donde" de clave foránea en la tabla "quedada" que referencia la PK de "sitio" (campo "direccion").
+
+
+3.4. Recorte y pegue aquí el resultado que muestra MySQL con la sentencia SHOW TABLES:
+
+
+mysql> show tables;
++-----------------------+
+| Tables_in_misquedadas |
++-----------------------+
+| asiste                |
+| quedada               |
+| sitio                 |
+| usuario               |
++-----------------------+
+4 rows in set (0.00 sec)
+
+
+* Tarea 4. 
+
+4.1. Recorte y pegue aquí todas las sentencias INSERT INTO que haya utilizado para rellenar las tablas:
+
+
+mysql> insert into usuario values ("Gandalf", "sondor1234", "gandalf.png", "2000");
+
+mysql> insert into usuario values ("Bilbo", "hobbiton1234", "bilbo.png", "111");
+
+mysql> insert into usuario values ("Sauron", "morgoth1234", "sauron.png", null);
+
+mysql> insert into sitio values ("Cafetería ETSIT", "40.452378, -3.726213");
+
+mysql> insert into sitio values ("Teatro Kapital", "40.409773, -3.693173");
+
+mysql> insert into sitio values ("WeWork Castellana", "40.435460, -3.689628");
+
+mysql> insert into quedada values ("Fiesta de Cumpleaños de Frodo", "2018-12-18", "22:30:00", "Teatro Kapital");
+
+mysql> insert into quedada values ("Reunión de La Com. del Anillo", "2019-02-06", "16:15:00", "WeWork Castellana");
+
+mysql> insert into quedada values ("Café antes de Álgebra", "2018-12-13", "08:10:00", "Cafetería ETSIT");
+
+mysql> insert into asiste values ("Bilbo", "Fiesta de Cumpleaños de Frodo");
+
+mysql> insert into asiste values ("Gandalf", "Fiesta de Cumpleaños de Frodo");
+
+mysql> insert into asiste values ("Gandalf", "Reunión de La Com. del Anillo");
+
+mysql> insert into asiste values ("Sauron", "Reunión de La Com. del Anillo");
+
+mysql> insert into asiste values ("Sauron", "Café antes de Álgebra");
+
+mysql> insert into asiste values ("Bilbo", "Café antes de Álgebra");
+
+
+* Tarea 5.
+ 
+5.1. Recorte y pegue aquí el resultado de las sentencias SELECT  para cada una de las tablas creadas:
+
+mysql> select * from usuario;
++---------+--------------+-------------+------+
+| nombre  | clave        | imagen      | edad |
++---------+--------------+-------------+------+
+| Bilbo   | hobbiton1234 | bilbo.png   |  111 |
+| Gandalf | sondor1234   | gandalf.png | 2000 |
+| Sauron  | morgoth1234  | sauron.png  | NULL |
++---------+--------------+-------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from sitio;
++-------------------+----------------------+
+| direccion         | coordenadas          |
++-------------------+----------------------+
+| Cafetería ETSIT   | 40.452378, -3.726213 |
+| Teatro Kapital    | 40.409773, -3.693173 |
+| WeWork Castellana | 40.435460, -3.689628 |
++-------------------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from quedada;
++--------------------------------+------------+----------+-------------------+
+| que                            | dia        | hora     | donde             |
++--------------------------------+------------+----------+-------------------+
+| Café antes de Álgebra          | 2018-12-13 | 08:10:00 | Cafetería ETSIT   |
+| Fiesta de Cumpleaños de Frodo  | 2018-12-18 | 22:30:00 | Teatro Kapital    |
+| Reunión de La Com. del Anillo  | 2019-02-06 | 16:15:00 | WeWork Castellana |
++--------------------------------+------------+----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from asiste;
++---------+--------------------------------+
+| nombre  | que                            |
++---------+--------------------------------+
+| Bilbo   | Café antes de Álgebra          |
+| Bilbo   | Fiesta de Cumpleaños de Frodo  |
+| Gandalf | Fiesta de Cumpleaños de Frodo  |
+| Gandalf | Reunión de La Com. del Anillo  |
+| Sauron  | Café antes de Álgebra          |
+| Sauron  | Reunión de La Com. del Anillo  |
++---------+--------------------------------+
+6 rows in set (0.00 sec)
+
+
+5.2. Escriba una sentencia SELECT para realizar la consulta que se indique en la tarea correspondiente a su grupo de clase:
+
+mysql> select que, donde from quedada where dia between "2018-12-01" and "2018-12-15" order by dia, hora;
+
+
+     Recorte y pegue aquí el resultado que da MySQL al ejecutar la sentencia SELECT anterior:
+
+
+mysql> select que, donde from quedada where dia between "2018-12-01" and "2018-12-15" order by dia, hora;
++-------------------------+------------------+
+| que                     | donde            |
++-------------------------+------------------+
+| Café antes de Álgebra   | Cafetería ETSIT  |
++-------------------------+------------------+
+1 row in set (0.00 sec)
+
+
+
+-------------------------------
