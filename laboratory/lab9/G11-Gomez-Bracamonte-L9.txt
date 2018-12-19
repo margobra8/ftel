@@ -21,7 +21,7 @@ Host
 
 - ¿Cuáles son los idiomas en los que se prefiere recibir la información que envíe el servidor? 
 
-COMPROBAR ESTO en-US, en
+es-ES, en (Español e Inglés)
 
 - ¿Cuál es el nombre de la línea de cabecera donde se indican?
 
@@ -49,12 +49,86 @@ El código que devuelven es 304 Not Modified. El navegador entiende, entonces, q
 * Tarea 6. Realización de consultas iterativas al DNS. Para cada uno de los sitios web indicados, realice los puntos que siguen.
 - En el cuadro de texto "Hostnames or IP addresses", escriba el nombre DNS del servidor web. En la columna "Options", marque la opción "trace". Pulse el botón "Dig". Incluya en el formulario de la práctica la salida de la orden anterior. 
 
+.			41895	IN	NS	l.root-servers.net.
+.			41895	IN	NS	b.root-servers.net.
+.			41895	IN	NS	k.root-servers.net.
+.			41895	IN	NS	d.root-servers.net.
+.			41895	IN	NS	f.root-servers.net.
+.			41895	IN	NS	m.root-servers.net.
+.			41895	IN	NS	g.root-servers.net.
+.			41895	IN	NS	j.root-servers.net.
+.			41895	IN	NS	c.root-servers.net.
+.			41895	IN	NS	i.root-servers.net.
+.			41895	IN	NS	h.root-servers.net.
+.			41895	IN	NS	a.root-servers.net.
+.			41895	IN	NS	e.root-servers.net.
+;; Received 228 bytes from 8.8.4.4#53(8.8.4.4) in 80 ms
 
+de.			172800	IN	NS	l.de.net.
+de.			172800	IN	NS	f.nic.de.
+de.			172800	IN	NS	z.nic.de.
+de.			172800	IN	NS	a.nic.de.
+de.			172800	IN	NS	n.de.net.
+de.			172800	IN	NS	s.de.net.
+;; Received 381 bytes from 193.0.14.129#53(193.0.14.129) in 51 ms
+
+uni-goettingen.de.	86400	IN	NS	ns3.gwdg.de.
+uni-goettingen.de.	86400	IN	NS	ns2.gwdg.de.
+uni-goettingen.de.	86400	IN	NS	gwdu01.gwdg.de.
+;; Received 149 bytes from 195.243.137.26#53(195.243.137.26) in 113 ms
+
+www.uni-goettingen.de.	3600	IN	CNAME	www-gcms.uni-goettingen.de.
+www-gcms.uni-goettingen.de. 300	IN	A	134.76.20.195
+uni-goettingen.de.	3600	IN	NS	NS2.gwdg.de.
+uni-goettingen.de.	3600	IN	NS	ns3.gwdg.de.
+uni-goettingen.de.	3600	IN	NS	gwdu01.gwdg.de.
+;; Received 188 bytes from 134.76.33.21#53(134.76.33.21) in 119 ms
+
+
+
+.			43350	IN	NS	a.root-servers.net.
+.			43350	IN	NS	b.root-servers.net.
+.			43350	IN	NS	c.root-servers.net.
+.			43350	IN	NS	d.root-servers.net.
+.			43350	IN	NS	e.root-servers.net.
+.			43350	IN	NS	f.root-servers.net.
+.			43350	IN	NS	g.root-servers.net.
+.			43350	IN	NS	h.root-servers.net.
+.			43350	IN	NS	i.root-servers.net.
+.			43350	IN	NS	j.root-servers.net.
+.			43350	IN	NS	k.root-servers.net.
+.			43350	IN	NS	l.root-servers.net.
+.			43350	IN	NS	m.root-servers.net.
+;; Received 228 bytes from 8.8.4.4#53(8.8.4.4) in 68 ms
+
+de.			172800	IN	NS	n.de.net.
+de.			172800	IN	NS	f.nic.de.
+de.			172800	IN	NS	z.nic.de.
+de.			172800	IN	NS	s.de.net.
+de.			172800	IN	NS	l.de.net.
+de.			172800	IN	NS	a.nic.de.
+;; Received 376 bytes from 192.33.4.12#53(192.33.4.12) in 11 ms
+
+tu-berlin.de.		86400	IN	NS	dns-3.dfn.de.
+tu-berlin.de.		86400	IN	NS	ns.tu-berlin.de.
+tu-berlin.de.		86400	IN	NS	dns-2.dfn.de.
+;; Received 227 bytes from 194.246.96.1#53(194.246.96.1) in 88 ms
+
+www.tu-berlin.de.	28800	IN	A	130.149.7.201
+tu-berlin.de.		28800	IN	NS	ns.tu-berlin.de.
+tu-berlin.de.		28800	IN	NS	dns-2.dfn.de.
+tu-berlin.de.		28800	IN	NS	dns-3.dfn.de.
+;; Received 243 bytes from 193.174.75.54#53(193.174.75.54) in 127 ms
 
 - Indique cuál es la dirección IP del servidor web buscado.
 
+134.76.20.195 para www.uni-goettingen.de
+130.149.7.201 para  www.tu-berlin.de
 
 - ¿El nombre del servidor web es un “alias”? ¿Por qué?
+
+Para www.uni-goettingen.de sí es un alias. Esto quiere decir que www.uni-goettingen.de es un alias para el nombre canónico, el nombre "real" www-gcms.uni-goettingen.de. Esto se ve con una entrada del tipo CNAME en los registros DNS.
+
 
 
 
