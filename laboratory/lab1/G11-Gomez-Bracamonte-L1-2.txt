@@ -1,0 +1,16 @@
+Marcos Gómez Bracamonte
+cd lab1
+nano creditos.txt 
+cp creditos.txt creditos-mod.txt
+cp creditos.txt creditos.bak
+nano creditos-mod.txt 
+mv creditos-mod.txt numero-creditos.txt
+wc numero-creditos.txt 
+cat numero-creditos.txt 
+ls
+ls -a
+ls cre* 
+man diff
+diff -s creditos.txt creditos.bak 
+rm -i creditos.bak 
+history -w G11-Gomez-Bracamonte-L1-2.txt
