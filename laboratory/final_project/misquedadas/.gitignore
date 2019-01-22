@@ -32,3 +32,9 @@ stop.sh
 misquedadas-2.json
 misquedadas-2.json
 readme2.md
+*.pid
+man.txt
+hero.txt
+apidoc.json
+jsdoc-config
+.editorconfig
