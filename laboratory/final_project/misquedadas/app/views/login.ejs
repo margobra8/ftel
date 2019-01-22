@@ -1,0 +1,51 @@
+<% include head %>
+
+<body id="loginBody">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Accede a MIS QUEDADAS v2</h5>
+                        <p class="text-center">Introduce tu usuario y contraseña</p>
+                        <form class="form-signin" id="Login" action="/login" method="post" enctype='application/json'>
+                            <div class="form-label-group">
+                                <input type="text" id="inputEmail" class="form-control" name="nombre" placeholder="Usuario"
+                                    required autofocus>
+                                <label for="inputEmail">Usuario</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control" name="clave" placeholder="Contraseña"
+                                    required>
+                                <label for="inputPassword">Contraseña</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="/js/json-formdata.js"></script>
+
+<script>
+    /* Common use case, similar to usual FormData object */
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/login');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(new JSONFormData(form).formData));
+        xhr.addEventListener('loadend', function () {
+            // Callback...
+            window.location.href = '/quedada';
+        }, false);
+    }, false);
+
+</script>

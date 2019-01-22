@@ -1,0 +1,47 @@
+{
+  "name": "misquedadas-2",
+  "version": "0.0.1",
+  "description": "Practica final de FTEL",
+  "title": "misquedadas2",
+  "author": " <diego.martin.de.andres@upm.es>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DiegoMartindeAndres/misquedadas.git"
+  },
+  "readme": "TODO add a readme description",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "jsdoc": "./node_modules/.bin/jsdoc -r -c ./jsdoc-config.json -d ./jsdoc",
+    "apidoc": "./node_modules/.bin/apidoc -f \".*\\.js$\" -i ./app -o ./apidoc"
+  },
+  "bin": {
+    "mq2": "server.js"
+  },
+  "dependencies": {
+    "app-module-path": "2.2.0",
+    "bluesky-logger": "^0.7.1",
+    "body-parser": "^1.18.3",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.4.3",
+    "ejs": "^2.6.1",
+    "express": ">=4.16.4",
+    "express-session": "~1.15.6",
+    "lodash": ">=4.17.11",
+    "method-override": "^2.3.10",
+    "minimist": "1.2.0",
+    "moment": ">=2.22.2",
+    "mysql": "^2.16.0",
+    "passport": "~0.4.0",
+    "passport-local": "~1.0.0",
+    "path": "^0.12.7",
+    "q": "1.4.0"
+  },
+  "devDependencies": {
+    "apidoc": "0.17.5",
+    "docdash": "0.4.0",
+    "jsdoc": "3.4.3",
+    "mocha": ">=5.2.0"
+  }
+}
