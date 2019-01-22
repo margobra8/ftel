@@ -1,0 +1,11 @@
+EJERCICIOS DE SQL:
+
+E1:
+a) CREATE TABLE music (artist VARCHAR(30), album VARCHAR(30), released YEAR, genre VARCHAR(30), copies REAL, PRIMARY KEY (artist, album))
+b) INSERT INTO music VALUES ("Michael Jackson", "Thriller", 1982, "Pop, Rock, R&B", 47.3)
+c) SELECT artist, album FROM music WHERE released > "1970" AND copies > 25
+
+E2:
+a) SELECT nom_apell FROM alumno WHERE dni = "12345678"
+b) SELECT AVG(nota) FROM matriculado WHERE siglas = "FTEL"
+c) SELECT COUNT(dni) FROM matriculado WHERE nc=6 AND siglas="FTEL"
